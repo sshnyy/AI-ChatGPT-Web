@@ -11,7 +11,7 @@
 ## Project
 
     Date : 2023.06 ~ 2023.11
-    Team: 4명
+    Team: 3명
     
     My Roles:
     - 프로젝트 보조
