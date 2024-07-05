@@ -10,7 +10,7 @@
 
 ## Project
 
-    Date : 2023.06 ~ 2023.11
+    Date : 2023.03 ~ 2023.11 (7개월)
     Team: 3명
     
     My Roles:
