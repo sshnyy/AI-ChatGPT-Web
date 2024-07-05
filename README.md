@@ -5,7 +5,7 @@
 - 한국정보기술학회 KIIT2023 프로젝트
 
 <details>
-<summary>🏆 우수상</summary> 
+<summary>🏆 우수논문상</summary> 
 
   <img src="https://github.com/sshnyy/AI-ChatGPT-Web/assets/99328827/2eca725b-cfcd-437b-9d53-b7011b46f10e" height="600">
 
