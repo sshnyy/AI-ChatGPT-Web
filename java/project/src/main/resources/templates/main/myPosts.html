@@ -1,0 +1,17 @@
+ <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>writer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="post:${findPosts}">
+            <td th:text="${post.id}"></td>
+            <td><a th:href="@{|/board/${post.id}|}" th:text="${post.boardTitle}"></a></td>
+            <td th:text="${post.boardWriter}"></td>
+
+        </tr>
+        </tbody>
+    </table>

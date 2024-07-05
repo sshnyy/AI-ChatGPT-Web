@@ -1,0 +1,169 @@
+<!doctype html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>DermQA</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <!--Google Font link-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/css/slick/slick.css">
+    <link rel="stylesheet" href="/css/slick/slick-theme.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/bootsnav.css">
+
+    <!-- xsslider slider css -->
+
+    <link rel="stylesheet" href="/css/xsslider.css">
+    <!--For Plugins external css-->
+    <link rel="stylesheet" href="/css/plugins.css" />
+    <!--Theme custom css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/colors/maron.css">
+
+    <!--Theme Responsive css-->
+    <link rel="stylesheet" href="/css/responsive.css" />
+
+    <script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse">
+<header th:insert="common/LoginHeader.html"></header>
+<div class="culmn">
+    <!--Home page style-->
+    <div class="container mt-5">
+        <!-- 질문 -->
+        <table class="table table-bordered table-striped" style="display: none;">
+            <tr>
+                <th>id</th>
+                <td th:text="${board.id}"></td>
+            </tr>
+            <tr>
+                <th>title</th>
+                <td th:text="${board.boardTitle}"></td>
+            </tr>
+            <tr>
+                <th>writer</th>
+                <td th:text="${board.boardWriter}"></td>
+            </tr>
+            <tr>
+                <th>date</th>
+                <td th:text="${board.boardCreatedTime}"></td>
+            </tr>
+            <tr>
+                <th>hits</th>
+                <td th:text="${board.boardHits}"></td>
+            </tr>
+            <tr>
+                <th>contents</th>
+                <td th:text="${board.boardContents}"></td>
+            </tr>
+            <tr th:if="${board.fileAttached == 1}">
+                <th>image</th>
+                <td><img th:src="@{|/upload/${board.storedFileName}|}" width="200" alt=""></td>
+            </tr>
+        </table>
+        <div style="display:none;">
+        <div class="Image" th:if="${board.fileAttached == 1}"><img th:src="@{|/upload/${board.storedFileName}|}" ></div>
+        </div>
+        <!-- 채팅 로그 출력 부분 -->
+        <div id="chatWindow">
+            <div class="row">
+                <div class="col-md" id="Msg">
+                    <div id="plusMsg">
+                        <!-- Thymeleaf를 사용하여 DB에서 가져온 채팅 내용과 comment를 표시 -->
+                        <div th:utext="${board.boardContents}"></div>
+
+                        <!-- Thymeleaf를 사용하여 comment 리스트를 순회하며 버블 생성 -->
+                        <div th:each="comment : ${commentList}">
+                            <div class="chat-bubble chat-bubble-left">
+                                <div th:text="${comment.commentContents}"></div>
+                                <div class="chat-time" th:text="${comment.commentCreatedTime}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- JS includes -->
+<script src="/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.magnific-popup.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
+<script src="/css/slick/slick.js"></script>
+<script src="/css/slick/slick.min.js"></script>
+<script src="/js/jquery.collapse.js"></script>
+<script src="/js/bootsnav.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+<!--웹 소켓 JS 파일-->
+<script>
+window.onload = function() {
+    var chatContents = /*[[${board.boardContents}]]*/ 'default';
+    var comments = /*[[${commentList}]]*/ [];
+    var chatDisplay = document.getElementById('plusMsg');
+
+    chatContents.split("\n").forEach(function(line) {
+        var bubble = document.createElement('div');
+        if (line.includes("[USER]")) {
+            bubble.className = "chat-bubble chat-bubble-right";
+        } else if (line.includes("[SERVER]")) {
+            bubble.className = "chat-bubble chat-bubble-left";
+        }
+
+        chatDisplay.appendChild(bubble);
+        // 이미 추가된 버블에서 [IMG] 문자열 대체
+        replaceIMGInBubbles();
+    });
+
+    comments.forEach(function(comment) {
+        var bubble = document.createElement('div');
+        bubble.className = "chat-bubble chat-bubble-left";
+        bubble.textContent = comment.commentContents;
+        var time = document.createElement('div');
+        time.className = "chat-time";
+        time.textContent = comment.commentCreatedTime;
+        bubble.appendChild(time);
+        chatDisplay.appendChild(bubble);
+    });
+};
+
+function replaceIMGInBubbles() {
+    // 1. 원본 요소를 선택
+    var originalElement = document.querySelector('.Image');
+
+    // 2. 원본 요소를 복사
+    var copiedElement = originalElement.cloneNode(true);
+
+    // 3. 대상 요소를 선택
+    var targetElement = document.querySelector('.chat-image');
+
+    // 4. 복사된 요소를 대상 요소의 내부에 삽입
+    targetElement.appendChild(copiedElement);
+}
+</script>
+
+</body>
+</html>

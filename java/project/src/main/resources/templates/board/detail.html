@@ -1,0 +1,160 @@
+<!doctype html>
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>DermQA</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <!--Google Font link-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/css/slick/slick.css">
+    <link rel="stylesheet" href="/css/slick/slick-theme.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/iconfont.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/css/bootsnav.css">
+
+    <!-- xsslider slider css -->
+
+    <link rel="stylesheet" href="/css/xsslider.css">
+    <!--For Plugins external css-->
+    <link rel="stylesheet" href="/css/plugins.css" />
+    <!--Theme custom css -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/colors/maron.css">
+
+    <!--Theme Responsive css-->
+    <link rel="stylesheet" href="/css/responsive.css" />
+
+    <script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse">
+<header th:insert="common/LoginHeader.html"></header>
+<div class="culmn">
+    <!--Home page style-->
+    <div class="container mt-5">
+        <!-- 질문 -->
+        <div class="container my-3">
+        <button onclick="listReq()" style="float: right margin: 10px;" class="btn btn-primary mr-2 small-btn">목록</button>
+        </div>
+        <div class="card my-3">
+            <div class="card-body">
+                <div class="title-wrapper">
+                    <h1 class="q-letter">Q</h1>
+                    <h2 class="border-bottom py-2" th:text="${board.boardTitle}"></h2>
+                </div>
+                <div style="float: right; padding:10px;" th:text="'작성일자: ' + ${board.boardCreatedTime}"></div>
+                <div style="float: right; padding:10px;" th:text="'작성자: ' + ${board.boardWriter}"></div>
+                <hr width="100%">
+
+                <p></p>
+                <div class="card-text" style="white-space: pre-line;" th:text="${board.boardContents}"></div>
+                <p></p>
+                <img th:src="@{|/upload/${board.storedFileName}|}" width="200" alt="">
+                <p></p>
+            </div>
+            <p></p>
+            <button onclick="updateReq()" class="btn btn-style1 mr-3 small-btn" th:if="${board.boardWriter eq member?.loginId}">수정</button>
+            <button onclick="deleteReq()" class="btn btn-style1 mr-3 small-btn" th:if="${board.boardWriter eq member?.loginId}">삭제</button>
+        </div>
+
+        <h3 class="border-bottom my-3 py-2" style="margin: 10px;">
+            <span th:utext="|${commentList.size()}|">0</span> 개의 답변이 있어요.
+        </h3>
+
+
+
+        <div id="comment-write" class="card my-3">
+            <input type="text" id="commentWriter" placeholder="작성자" class="form-control mb-2 custom-input" th:value="${member.loginId}" style="display:none;" readonly>
+            <div class="input-button-group">
+                <input type="text" id="commentContents" placeholder="내용" class="form-control my-3 ">
+                <button id="comment-write-btn" onclick="commentWrite()" class="btn btn-style1 mr-3 small-btn">↑</button>
+            </div>
+        </div>
+        <!-- 댓글 출력 부분 -->
+        <div id="comment-list">
+            <div class="card my-3" th:each="comment: ${commentList}">
+                <div class="card-body">
+                    <div style="float: right; padding:8px;" th:text="'작성일자: '+ ${comment.commentCreatedTime}"></div>
+                    <div style="float: right; padding:8px;" th:text="'작성자: ' + ${comment.commentWriter}"></div>
+                    <br>
+                    <div class="card-text" style="white-space: pre-line;" th:text="${comment.commentContents}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script th:inline="javascript">
+    const commentWrite = () => {
+        const writer = document.getElementById("commentWriter").value;
+        const contents = document.getElementById("commentContents").value;
+        console.log("작성자: ", writer);
+        console.log("내용: ", contents);
+        const id = [[${board.id}]];
+        $.ajax({
+           // 요청방식: post, 요청주소: /comment/save, 요청데이터: 작성자, 작성내용, 게시글번호
+           type: "post",
+           url: "/comment/save",
+           data: {
+               "commentWriter": writer,
+               "commentContents": contents,
+               "boardId": id
+           },
+        success: function (res) {
+            console.log("요청성공", res);
+            location.reload();
+        },
+           error: function (err) {
+               console.log("요청실패", err);
+           }
+        });
+
+    }
+    const listReq = () => {
+        console.log("목록 요청");
+        const page = [[${page}]];
+        location.href = "/board/paging?page="+page;
+    }
+    const updateReq = () => {
+        console.log("수정 요청");
+        const id = [[${board.id}]];
+        location.href = "/board/update/" + id;
+    }
+    const deleteReq = () => {
+        console.log("삭제 요청");
+        const id = [[${board.id}]];
+        location.href = "/board/delete/" + id;
+    }
+</script>
+<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- JS includes -->
+<script src="/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.magnific-popup.js"></script>
+<script src="/js/jquery.easing.1.3.js"></script>
+<script src="/css/slick/slick.js"></script>
+<script src="/css/slick/slick.min.js"></script>
+<script src="/js/jquery.collapse.js"></script>
+<script src="/js/bootsnav.js"></script>
+<script src="/js/plugins.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
