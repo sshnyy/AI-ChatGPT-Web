@@ -42,3 +42,28 @@
 ![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/ee4e232b-3018-4a7b-b20e-07fac1672490)
 
 
+<br>
+
+## How to run Python File
+
+#### Train
+```
+git clone https://github.com/Kangsuyeon01/DermQA.git
+CD DermQA_project/DL
+```
+
+```
+python train.py
+```
+학습이 완료된 모델은 'models/saved_model' 에 저장됩니다.
+#### Inference (test dataset)
+```
+python pipeline.py
+```
+#### Run Web application (Socket communication between Java Spring and Python)
+```
+python server.py --model_saved_path=[trained model path] --OPENAI_API_KEY=[OPENAI_API_KEY]
+```
+* java Spring Project 실행의 경우 `DermQA_project/java/project/src/main/resources
+/application.properties`에서 MySQL 데이터 베이스 연결 후 사용
+--- 
