@@ -3,6 +3,16 @@
 ### 피부 병변 조기 진단을 위한 이미지 분류(AI)와 ChatGPT 기반 웹 시스템
 
 - 한국정보기술학회 KIIT2023 프로젝트
+
+<details>
+<summary>🏆 우수상</summary> 
+
+  <img src="https://github.com/sshnyy/AI-ChatGPT-Web/assets/99328827/2eca725b-cfcd-437b-9d53-b7011b46f10e" height="600">
+
+
+</details>
+
+
 - 사용 언어: `Python`, `Java`, ,`SpringBoot`,`JavaScript`, `MySQL`
 - 배포 환경 : `Ubuntu 18.04.6`
   
