@@ -3,7 +3,7 @@
 ### 피부 병변 조기 진단을 위한 이미지 분류(AI)와 ChatGPT 기반 웹 시스템
 
 - 한국정보기술학회 KIIT2023 프로젝트
-- 사용 언어: `Python`, `Java`, `JavaScript`, `MySQL`
+- 사용 언어: `Python`, `Java`, ,`SpringBoot`,`JavaScript`, `MySQL`
 - 배포 환경 : `Ubuntu 18.04.6`
   
 <br>
