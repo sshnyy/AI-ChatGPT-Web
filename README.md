@@ -27,15 +27,20 @@
 
 <br>
 
-## PPT
-
 <img width="1551" alt="image" src="https://github.com/sshnyy/AI-ChatGPT-Web/assets/99328827/77c147b6-30b3-4bad-a1ba-1f4b79711bd7">
 
+
+## 1️⃣ AI
 
 ![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/da7d27a5-0aee-47dc-b637-41770d9e3923)
 ![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/3589b0eb-0632-4f84-8e81-ff977c47b49e)
 ![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/7d57690d-9cf8-4f15-804a-352186d57106)
 ![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/e18ec188-0c4d-4b23-893c-8ef8cdd70575)
+
+
+<br>
+
+## 2️⃣ Web
 ![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/d2e1a10b-82cd-454f-80a7-ea66124122ab)
 ![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/b457f25d-2474-4bc2-ab2a-ada5bde54702)
 ![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/7b7dffda-11ed-4c11-8f6b-4d10c62a0443)
