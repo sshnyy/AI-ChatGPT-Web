@@ -12,6 +12,14 @@
 
 </details>
 
+<details>
+  
+<summary>📃 학술대회</summary> 
+
+  - 원문보기: [DBPIA-링크](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11652092)
+
+
+</details>
 
 - 사용 언어: `Python`, `Java` ,`SpringBoot`,`JavaScript`, `MySQL`
 - 배포 환경 : `Ubuntu 18.04.6`
