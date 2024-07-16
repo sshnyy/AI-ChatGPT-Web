@@ -12,16 +12,15 @@
   
     - 원문보기: [DBPIA-링크](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11652092)
 
-
-</details>
-
-- 사용 언어: `Python`, `Java` ,`SpringBoot`,`JavaScript`, `MySQL`
-- 배포 환경 : `Ubuntu 18.04.6`
   
 <br>
 
 ## Project
 
+- 사용 언어: `Python`, `Java` ,`SpringBoot`,`JavaScript`, `MySQL`
+- 배포 환경 : `Ubuntu 18.04.6`
+
+```
     Date : 2023.03 ~ 2023.11 (7개월)
     Team: 3명
     
@@ -29,6 +28,7 @@
     - AI 모델 활용
     - 피부 병변 조기 진단을 위한 API 연동
     - DB 구축
+```
 
 <br>
 
