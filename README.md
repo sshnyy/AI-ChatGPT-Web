@@ -4,19 +4,13 @@
 
 - 한국정보기술학회 KIIT2023 프로젝트
 
-<details>
-<summary>🏆 우수논문상</summary> 
-
-  <img src="https://github.com/sshnyy/AI-ChatGPT-Web/assets/99328827/2eca725b-cfcd-437b-9d53-b7011b46f10e" height="600">
-
-
-</details>
-
-<details>
+  <summary>🏆 우수논문상</summary> 
   
-<summary>📃 학술대회</summary> 
-
-  - 원문보기: [DBPIA-링크](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11652092)
+    <img src="https://github.com/sshnyy/AI-ChatGPT-Web/assets/99328827/2eca725b-cfcd-437b-9d53-b7011b46f10e" height="500">
+  
+  <summary>📃 학술대회</summary> 
+  
+    - 원문보기: [DBPIA-링크](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11652092)
 
 
 </details>
