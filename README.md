@@ -44,7 +44,6 @@
 
 ## 1️⃣ AI
 
-![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/da7d27a5-0aee-47dc-b637-41770d9e3923)
 ![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/3589b0eb-0632-4f84-8e81-ff977c47b49e)
 ![image](https://github.com/sohyunyg/Completed_Projects/assets/99328827/e18ec188-0c4d-4b23-893c-8ef8cdd70575)
 
