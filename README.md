@@ -1,6 +1,6 @@
 # AI-ChatGPT-Web
 
-### 피부 병변 조기 진단을 위한 이미지 분류(AI)와 ChatGPT 기반 웹 시스템
+## 🏥 피부 병변 조기 진단을 위한 이미지 분류(AI)와 ChatGPT 기반 웹 시스템
 
 - 한국정보기술학회 KIIT2023 프로젝트
 
@@ -15,7 +15,7 @@
   
 <br>
 
-## Project
+## 📚 Project
 
 - 사용 언어: `Python`, `Java` ,`SpringBoot`,`JavaScript`, `MySQL`
 - 배포 환경 : `Ubuntu 18.04.6`
@@ -32,7 +32,7 @@
 
 <br>
 
-## Summary
+## 👀 Summary
   
 - 제안하는 웹 시스템은 사용자가 피부 병변 이미지를 업로드하면, 해당 이미지를 분석하여 피부암 진단 정보를 제공하고, ChatGPT를 통해 추가적인 질문에 답변하며 즉각적인 답변을 제공합니다.
 
