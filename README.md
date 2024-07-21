@@ -17,7 +17,7 @@
 
 ## 📚 Project
 
-- 사용 언어: `Python`, `Java` ,`SpringBoot`,`JavaScript`, `MySQL`
+- 기술 스택: `Python`, `Java` ,`SpringBoot`,`JavaScript`, `MySQL`
 - 배포 환경 : `Ubuntu 18.04.6`
 
 ```
